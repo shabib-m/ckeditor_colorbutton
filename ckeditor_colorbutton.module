@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Registering CKEditor plugin.
+ */
+
+/**
+ * Implements hook_ckeditor_plugins().
+ */
+function ckeditor_colorbutton_ckeditor_plugins() {
+  $path = backdrop_get_path('module', 'ckeditor_colorbutton') . '/plugins';
+
+  $plugins['panelbutton'] = array(
+    'file' => 'plugin.js',
+    'path' => $path . '/panelbutton',
+    'enabled callback' => 'ckeditor_colorbutton_plugin_check',
+  );
+
+  $plugins['colorbutton'] = array(
+    'file' => 'plugin.js',
+    'path' => $path . '/colorbutton',
+    // 'css' => array(backdrop_get_path('module', 'ckeditor_colorbutton') . '/css/ckeditor-colorbutton.css'),
+    'enabled callback' => 'ckeditor_colorbutton_plugin_check',
+    'buttons' => array(
+      'BGColor' => array(
+        'label' => 'Background Color',
+        'image' => $path . '/colorbutton/icons/bgcolor.png',
+      ),
+      'TextColor' => array(
+        'label' => 'Text Color',
+        'image' => $path . '/colorbutton/icons/textcolor.png',
+      ),
+    ),
+  );
+
+  return $plugins;
+}
+
+function ckeditor_colorbutton_plugin_check($format, $plugin_name) {
+  return TRUE;
+}
+

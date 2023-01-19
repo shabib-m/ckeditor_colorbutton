@@ -1,0 +1,7 @@
+name = Ckeditor Color Button
+description = CKEditor plugin for adding Color Button.
+package = User interface
+backdrop = 1.x
+type = module
+
+
